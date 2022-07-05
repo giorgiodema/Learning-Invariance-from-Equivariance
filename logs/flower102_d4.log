@@ -1,0 +1,584 @@
+MODEL NAME:D4InvariantResNet_Flower102
+ResNet(
+  (conv1): LiftingConvolution(
+    (kernel): InterpolativeLiftingKernel(
+      (group): CyclicGroup()
+    )
+  )
+  (bn1): GroupBatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (relu): ReLU(inplace=True)
+  (maxpool): SpatialMaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+  (layer1): Sequential(
+    (0): BasicBlock(
+      (conv1): GroupConvolution(
+        (kernel): InterpolativeGroupKernel(
+          (group): CyclicGroup()
+        )
+      )
+      (bn1): GroupBatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): GroupConvolution(
+        (kernel): InterpolativeGroupKernel(
+          (group): CyclicGroup()
+        )
+      )
+      (bn2): GroupBatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (1): BasicBlock(
+      (conv1): GroupConvolution(
+        (kernel): InterpolativeGroupKernel(
+          (group): CyclicGroup()
+        )
+      )
+      (bn1): GroupBatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): GroupConvolution(
+        (kernel): InterpolativeGroupKernel(
+          (group): CyclicGroup()
+        )
+      )
+      (bn2): GroupBatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (layer2): Sequential(
+    (0): BasicBlock(
+      (conv1): GroupConvolution(
+        (kernel): InterpolativeGroupKernel(
+          (group): CyclicGroup()
+        )
+      )
+      (bn1): GroupBatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): GroupConvolution(
+        (kernel): InterpolativeGroupKernel(
+          (group): CyclicGroup()
+        )
+      )
+      (bn2): GroupBatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (downsample): Sequential(
+        (0): GroupConvolution(
+          (kernel): InterpolativeGroupKernel(
+            (group): CyclicGroup()
+          )
+        )
+        (1): GroupBatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): GroupConvolution(
+        (kernel): InterpolativeGroupKernel(
+          (group): CyclicGroup()
+        )
+      )
+      (bn1): GroupBatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): GroupConvolution(
+        (kernel): InterpolativeGroupKernel(
+          (group): CyclicGroup()
+        )
+      )
+      (bn2): GroupBatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (layer3): Sequential(
+    (0): BasicBlock(
+      (conv1): GroupConvolution(
+        (kernel): InterpolativeGroupKernel(
+          (group): CyclicGroup()
+        )
+      )
+      (bn1): GroupBatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): GroupConvolution(
+        (kernel): InterpolativeGroupKernel(
+          (group): CyclicGroup()
+        )
+      )
+      (bn2): GroupBatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (downsample): Sequential(
+        (0): GroupConvolution(
+          (kernel): InterpolativeGroupKernel(
+            (group): CyclicGroup()
+          )
+        )
+        (1): GroupBatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): GroupConvolution(
+        (kernel): InterpolativeGroupKernel(
+          (group): CyclicGroup()
+        )
+      )
+      (bn1): GroupBatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): GroupConvolution(
+        (kernel): InterpolativeGroupKernel(
+          (group): CyclicGroup()
+        )
+      )
+      (bn2): GroupBatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (layer4): Sequential(
+    (0): BasicBlock(
+      (conv1): GroupConvolution(
+        (kernel): InterpolativeGroupKernel(
+          (group): CyclicGroup()
+        )
+      )
+      (bn1): GroupBatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): GroupConvolution(
+        (kernel): InterpolativeGroupKernel(
+          (group): CyclicGroup()
+        )
+      )
+      (bn2): GroupBatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (downsample): Sequential(
+        (0): GroupConvolution(
+          (kernel): InterpolativeGroupKernel(
+            (group): CyclicGroup()
+          )
+        )
+        (1): GroupBatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): GroupConvolution(
+        (kernel): InterpolativeGroupKernel(
+          (group): CyclicGroup()
+        )
+      )
+      (bn1): GroupBatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): GroupConvolution(
+        (kernel): InterpolativeGroupKernel(
+          (group): CyclicGroup()
+        )
+      )
+      (bn2): GroupBatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (avgpool): Sequential(
+    (0): GroupAvgPool()
+    (1): SpatialAvgPool()
+  )
+  (fc): Linear(in_features=256, out_features=102, bias=True)
+)
+N PARAMS: 11207622
+ep:0/100    loss: 4.617229  [    0/ 1020]
+ep:0/100    loss: 4.750514  [  800/ 1020]
+-----------------------------
+Val Acc:0.03  Val loss:4.567797    Train Acc:0.01
+Loss decreased     inf->4.567797, Saving
+ep:1/100    loss: 4.678368  [    0/ 1020]
+ep:1/100    loss: 4.541525  [  800/ 1020]
+-----------------------------
+Val Acc:0.02  Val loss:4.501798    Train Acc:0.01
+Loss decreased 4.567797->4.501798, Saving
+ep:2/100    loss: 4.346817  [    0/ 1020]
+ep:2/100    loss: 4.464505  [  800/ 1020]
+-----------------------------
+Val Acc:0.02  Val loss:4.358403    Train Acc:0.01
+Loss decreased 4.501798->4.358403, Saving
+ep:3/100    loss: 4.020922  [    0/ 1020]
+ep:3/100    loss: 4.535302  [  800/ 1020]
+-----------------------------
+Val Acc:0.04  Val loss:4.161860    Train Acc:0.02
+Loss decreased 4.358403->4.161860, Saving
+ep:4/100    loss: 3.678353  [    0/ 1020]
+ep:4/100    loss: 3.927184  [  800/ 1020]
+-----------------------------
+Val Acc:0.06  Val loss:3.982502    Train Acc:0.03
+Loss decreased 4.161860->3.982502, Saving
+ep:5/100    loss: 3.407744  [    0/ 1020]
+ep:5/100    loss: 4.184422  [  800/ 1020]
+-----------------------------
+Val Acc:0.06  Val loss:3.864063    Train Acc:0.04
+Loss decreased 3.982502->3.864063, Saving
+ep:6/100    loss: 3.874617  [    0/ 1020]
+ep:6/100    loss: 3.969215  [  800/ 1020]
+-----------------------------
+Val Acc:0.07  Val loss:3.899609    Train Acc:0.05
+ep:7/100    loss: 3.300433  [    0/ 1020]
+ep:7/100    loss: 3.149417  [  800/ 1020]
+-----------------------------
+Val Acc:0.07  Val loss:3.779321    Train Acc:0.05
+Loss decreased 3.864063->3.779321, Saving
+ep:8/100    loss: 3.824364  [    0/ 1020]
+ep:8/100    loss: 3.341684  [  800/ 1020]
+-----------------------------
+Val Acc:0.09  Val loss:3.834925    Train Acc:0.07
+ep:9/100    loss: 3.345698  [    0/ 1020]
+ep:9/100    loss: 3.488047  [  800/ 1020]
+-----------------------------
+Val Acc:0.11  Val loss:3.639082    Train Acc:0.09
+Loss decreased 3.779321->3.639082, Saving
+ep:10/100    loss: 3.065337  [    0/ 1020]
+ep:10/100    loss: 2.841913  [  800/ 1020]
+-----------------------------
+Val Acc:0.10  Val loss:3.629003    Train Acc:0.10
+Loss decreased 3.639082->3.629003, Saving
+ep:11/100    loss: 3.673317  [    0/ 1020]
+ep:11/100    loss: 3.506394  [  800/ 1020]
+-----------------------------
+Val Acc:0.13  Val loss:3.578350    Train Acc:0.10
+Loss decreased 3.629003->3.578350, Saving
+ep:12/100    loss: 3.374844  [    0/ 1020]
+ep:12/100    loss: 2.659778  [  800/ 1020]
+-----------------------------
+Val Acc:0.15  Val loss:3.504395    Train Acc:0.12
+Loss decreased 3.578350->3.504395, Saving
+ep:13/100    loss: 3.323778  [    0/ 1020]
+ep:13/100    loss: 3.239128  [  800/ 1020]
+-----------------------------
+Val Acc:0.15  Val loss:3.462190    Train Acc:0.14
+Loss decreased 3.504395->3.462190, Saving
+ep:14/100    loss: 3.596173  [    0/ 1020]
+ep:14/100    loss: 3.302373  [  800/ 1020]
+-----------------------------
+Val Acc:0.13  Val loss:3.560971    Train Acc:0.14
+ep:15/100    loss: 2.425515  [    0/ 1020]
+ep:15/100    loss: 2.750330  [  800/ 1020]
+-----------------------------
+Val Acc:0.13  Val loss:3.498069    Train Acc:0.17
+ep:16/100    loss: 2.999609  [    0/ 1020]
+ep:16/100    loss: 2.786582  [  800/ 1020]
+-----------------------------
+Val Acc:0.14  Val loss:3.726041    Train Acc:0.17
+ep:17/100    loss: 2.832128  [    0/ 1020]
+ep:17/100    loss: 2.410617  [  800/ 1020]
+-----------------------------
+Val Acc:0.17  Val loss:3.400911    Train Acc:0.19
+Loss decreased 3.462190->3.400911, Saving
+ep:18/100    loss: 2.501217  [    0/ 1020]
+ep:18/100    loss: 3.046469  [  800/ 1020]
+-----------------------------
+Val Acc:0.16  Val loss:3.445950    Train Acc:0.22
+ep:19/100    loss: 2.177885  [    0/ 1020]
+ep:19/100    loss: 2.954139  [  800/ 1020]
+-----------------------------
+Val Acc:0.18  Val loss:3.410770    Train Acc:0.21
+ep:20/100    loss: 2.873505  [    0/ 1020]
+ep:20/100    loss: 2.889937  [  800/ 1020]
+-----------------------------
+Val Acc:0.18  Val loss:3.370758    Train Acc:0.23
+Loss decreased 3.400911->3.370758, Saving
+ep:21/100    loss: 2.368726  [    0/ 1020]
+ep:21/100    loss: 2.121263  [  800/ 1020]
+-----------------------------
+Val Acc:0.21  Val loss:3.265395    Train Acc:0.24
+Loss decreased 3.370758->3.265395, Saving
+ep:22/100    loss: 2.414454  [    0/ 1020]
+ep:22/100    loss: 2.735790  [  800/ 1020]
+-----------------------------
+Val Acc:0.19  Val loss:3.404492    Train Acc:0.29
+ep:23/100    loss: 2.126533  [    0/ 1020]
+ep:23/100    loss: 3.044636  [  800/ 1020]
+-----------------------------
+Val Acc:0.19  Val loss:3.470958    Train Acc:0.29
+ep:24/100    loss: 1.818766  [    0/ 1020]
+ep:24/100    loss: 2.480591  [  800/ 1020]
+-----------------------------
+Val Acc:0.20  Val loss:3.547210    Train Acc:0.29
+ep:25/100    loss: 2.381042  [    0/ 1020]
+ep:25/100    loss: 2.217206  [  800/ 1020]
+-----------------------------
+Val Acc:0.20  Val loss:3.499451    Train Acc:0.31
+ep:26/100    loss: 1.726247  [    0/ 1020]
+ep:26/100    loss: 2.509691  [  800/ 1020]
+-----------------------------
+Val Acc:0.19  Val loss:3.356857    Train Acc:0.32
+ep:27/100    loss: 2.369117  [    0/ 1020]
+ep:27/100    loss: 2.010681  [  800/ 1020]
+-----------------------------
+Val Acc:0.20  Val loss:3.527191    Train Acc:0.34
+ep:28/100    loss: 1.933284  [    0/ 1020]
+ep:28/100    loss: 1.189258  [  800/ 1020]
+-----------------------------
+Val Acc:0.23  Val loss:3.722071    Train Acc:0.37
+ep:29/100    loss: 2.092462  [    0/ 1020]
+ep:29/100    loss: 3.159373  [  800/ 1020]
+-----------------------------
+Val Acc:0.21  Val loss:3.492681    Train Acc:0.40
+ep:30/100    loss: 2.187799  [    0/ 1020]
+ep:30/100    loss: 3.174808  [  800/ 1020]
+-----------------------------
+Val Acc:0.22  Val loss:3.754817    Train Acc:0.40
+ep:31/100    loss: 2.104603  [    0/ 1020]
+ep:31/100    loss: 1.634916  [  800/ 1020]
+-----------------------------
+Val Acc:0.22  Val loss:3.745848    Train Acc:0.45
+ep:32/100    loss: 1.415380  [    0/ 1020]
+ep:32/100    loss: 2.076270  [  800/ 1020]
+-----------------------------
+Val Acc:0.22  Val loss:4.096582    Train Acc:0.48
+ep:33/100    loss: 1.928971  [    0/ 1020]
+ep:33/100    loss: 1.985918  [  800/ 1020]
+-----------------------------
+Val Acc:0.24  Val loss:4.004524    Train Acc:0.47
+ep:34/100    loss: 0.472697  [    0/ 1020]
+ep:34/100    loss: 1.030194  [  800/ 1020]
+-----------------------------
+Val Acc:0.22  Val loss:3.783762    Train Acc:0.52
+ep:35/100    loss: 1.415596  [    0/ 1020]
+ep:35/100    loss: 1.130615  [  800/ 1020]
+-----------------------------
+Val Acc:0.25  Val loss:4.144200    Train Acc:0.55
+ep:36/100    loss: 1.749837  [    0/ 1020]
+ep:36/100    loss: 1.634515  [  800/ 1020]
+-----------------------------
+Val Acc:0.21  Val loss:4.368994    Train Acc:0.57
+ep:37/100    loss: 1.373746  [    0/ 1020]
+ep:37/100    loss: 0.501939  [  800/ 1020]
+-----------------------------
+Val Acc:0.21  Val loss:5.070611    Train Acc:0.61
+ep:38/100    loss: 1.354348  [    0/ 1020]
+ep:38/100    loss: 1.138740  [  800/ 1020]
+-----------------------------
+Val Acc:0.22  Val loss:5.343024    Train Acc:0.65
+ep:39/100    loss: 0.876044  [    0/ 1020]
+ep:39/100    loss: 1.235531  [  800/ 1020]
+-----------------------------
+Val Acc:0.24  Val loss:5.117693    Train Acc:0.68
+ep:40/100    loss: 1.300696  [    0/ 1020]
+ep:40/100    loss: 1.529958  [  800/ 1020]
+-----------------------------
+Val Acc:0.22  Val loss:5.859532    Train Acc:0.69
+ep:41/100    loss: 0.444292  [    0/ 1020]
+ep:41/100    loss: 1.413653  [  800/ 1020]
+-----------------------------
+Val Acc:0.21  Val loss:5.509878    Train Acc:0.71
+ep:42/100    loss: 1.433599  [    0/ 1020]
+ep:42/100    loss: 1.457899  [  800/ 1020]
+-----------------------------
+Val Acc:0.24  Val loss:5.632680    Train Acc:0.73
+ep:43/100    loss: 0.529122  [    0/ 1020]
+ep:43/100    loss: 0.935070  [  800/ 1020]
+-----------------------------
+Val Acc:0.24  Val loss:5.691774    Train Acc:0.72
+ep:44/100    loss: 0.521213  [    0/ 1020]
+ep:44/100    loss: 0.288262  [  800/ 1020]
+-----------------------------
+Val Acc:0.21  Val loss:7.100161    Train Acc:0.80
+ep:45/100    loss: 0.647174  [    0/ 1020]
+ep:45/100    loss: 0.756508  [  800/ 1020]
+-----------------------------
+Val Acc:0.24  Val loss:6.996831    Train Acc:0.79
+ep:46/100    loss: 0.125343  [    0/ 1020]
+ep:46/100    loss: 2.044082  [  800/ 1020]
+-----------------------------
+Val Acc:0.25  Val loss:6.356555    Train Acc:0.80
+ep:47/100    loss: 0.294531  [    0/ 1020]
+ep:47/100    loss: 0.538550  [  800/ 1020]
+-----------------------------
+Val Acc:0.20  Val loss:6.838690    Train Acc:0.84
+ep:48/100    loss: 2.325572  [    0/ 1020]
+ep:48/100    loss: 0.623625  [  800/ 1020]
+-----------------------------
+Val Acc:0.20  Val loss:6.793186    Train Acc:0.78
+ep:49/100    loss: 0.364520  [    0/ 1020]
+ep:49/100    loss: 0.736969  [  800/ 1020]
+-----------------------------
+Val Acc:0.22  Val loss:7.416623    Train Acc:0.86
+ep:50/100    loss: 0.409458  [    0/ 1020]
+ep:50/100    loss: 1.251344  [  800/ 1020]
+-----------------------------
+Val Acc:0.24  Val loss:7.402438    Train Acc:0.85
+ep:51/100    loss: 0.323126  [    0/ 1020]
+ep:51/100    loss: 0.236553  [  800/ 1020]
+-----------------------------
+Val Acc:0.23  Val loss:6.520503    Train Acc:0.82
+ep:52/100    loss: 0.438156  [    0/ 1020]
+ep:52/100    loss: 1.031585  [  800/ 1020]
+-----------------------------
+Val Acc:0.21  Val loss:7.564376    Train Acc:0.87
+ep:53/100    loss: 0.167751  [    0/ 1020]
+ep:53/100    loss: 0.582669  [  800/ 1020]
+-----------------------------
+Val Acc:0.24  Val loss:7.962793    Train Acc:0.90
+ep:54/100    loss: 0.783019  [    0/ 1020]
+ep:54/100    loss: 0.575025  [  800/ 1020]
+-----------------------------
+Val Acc:0.22  Val loss:7.868511    Train Acc:0.91
+ep:55/100    loss: 0.104711  [    0/ 1020]
+ep:55/100    loss: 0.667522  [  800/ 1020]
+-----------------------------
+Val Acc:0.23  Val loss:7.982870    Train Acc:0.88
+ep:56/100    loss: 0.372936  [    0/ 1020]
+ep:56/100    loss: 0.411860  [  800/ 1020]
+-----------------------------
+Val Acc:0.22  Val loss:8.298565    Train Acc:0.87
+ep:57/100    loss: 0.042553  [    0/ 1020]
+ep:57/100    loss: 0.456332  [  800/ 1020]
+-----------------------------
+Val Acc:0.22  Val loss:7.726570    Train Acc:0.87
+ep:58/100    loss: 0.051940  [    0/ 1020]
+ep:58/100    loss: 0.261627  [  800/ 1020]
+-----------------------------
+Val Acc:0.23  Val loss:7.828659    Train Acc:0.90
+ep:59/100    loss: 0.225717  [    0/ 1020]
+ep:59/100    loss: 0.698270  [  800/ 1020]
+-----------------------------
+Val Acc:0.23  Val loss:8.271957    Train Acc:0.90
+ep:60/100    loss: 0.079756  [    0/ 1020]
+ep:60/100    loss: 0.020606  [  800/ 1020]
+-----------------------------
+Val Acc:0.23  Val loss:9.203705    Train Acc:0.96
+ep:61/100    loss: 0.001828  [    0/ 1020]
+ep:61/100    loss: 0.036635  [  800/ 1020]
+-----------------------------
+Val Acc:0.24  Val loss:9.455378    Train Acc:0.96
+ep:62/100    loss: 0.008368  [    0/ 1020]
+ep:62/100    loss: 1.033693  [  800/ 1020]
+-----------------------------
+Val Acc:0.23  Val loss:8.252910    Train Acc:0.84
+ep:63/100    loss: 0.247470  [    0/ 1020]
+ep:63/100    loss: 0.648907  [  800/ 1020]
+-----------------------------
+Val Acc:0.23  Val loss:8.114607    Train Acc:0.92
+ep:64/100    loss: 0.000265  [    0/ 1020]
+ep:64/100    loss: 0.027015  [  800/ 1020]
+-----------------------------
+Val Acc:0.22  Val loss:8.512652    Train Acc:0.95
+ep:65/100    loss: 0.037779  [    0/ 1020]
+ep:65/100    loss: 0.022581  [  800/ 1020]
+-----------------------------
+Val Acc:0.24  Val loss:9.990310    Train Acc:0.98
+ep:66/100    loss: 0.001706  [    0/ 1020]
+ep:66/100    loss: 0.064041  [  800/ 1020]
+-----------------------------
+Val Acc:0.24  Val loss:10.412179    Train Acc:0.98
+ep:67/100    loss: 0.002088  [    0/ 1020]
+ep:67/100    loss: 0.174825  [  800/ 1020]
+-----------------------------
+Val Acc:0.23  Val loss:10.821438    Train Acc:0.98
+ep:68/100    loss: 0.173775  [    0/ 1020]
+ep:68/100    loss: 0.041821  [  800/ 1020]
+-----------------------------
+Val Acc:0.20  Val loss:9.673957    Train Acc:0.94
+ep:69/100    loss: 0.216772  [    0/ 1020]
+ep:69/100    loss: 3.067605  [  800/ 1020]
+-----------------------------
+Val Acc:0.20  Val loss:5.705705    Train Acc:0.75
+ep:70/100    loss: 0.739862  [    0/ 1020]
+ep:70/100    loss: 0.160758  [  800/ 1020]
+-----------------------------
+Val Acc:0.22  Val loss:8.749923    Train Acc:0.87
+ep:71/100    loss: 0.102713  [    0/ 1020]
+ep:71/100    loss: 0.450143  [  800/ 1020]
+-----------------------------
+Val Acc:0.23  Val loss:8.466653    Train Acc:0.96
+ep:72/100    loss: 0.084502  [    0/ 1020]
+ep:72/100    loss: 0.026261  [  800/ 1020]
+-----------------------------
+Val Acc:0.22  Val loss:10.771172    Train Acc:0.98
+ep:73/100    loss: 0.282521  [    0/ 1020]
+ep:73/100    loss: 0.133686  [  800/ 1020]
+-----------------------------
+Val Acc:0.22  Val loss:8.157570    Train Acc:0.92
+ep:74/100    loss: 0.200963  [    0/ 1020]
+ep:74/100    loss: 0.164950  [  800/ 1020]
+-----------------------------
+Val Acc:0.23  Val loss:9.579220    Train Acc:0.96
+ep:75/100    loss: 0.040787  [    0/ 1020]
+ep:75/100    loss: 0.175488  [  800/ 1020]
+-----------------------------
+Val Acc:0.21  Val loss:9.366243    Train Acc:0.95
+ep:76/100    loss: 0.199939  [    0/ 1020]
+ep:76/100    loss: 0.034011  [  800/ 1020]
+-----------------------------
+Val Acc:0.23  Val loss:10.094396    Train Acc:0.97
+ep:77/100    loss: 0.005809  [    0/ 1020]
+ep:77/100    loss: 0.117696  [  800/ 1020]
+-----------------------------
+Val Acc:0.19  Val loss:10.097376    Train Acc:0.95
+ep:78/100    loss: 0.004061  [    0/ 1020]
+ep:78/100    loss: 0.015574  [  800/ 1020]
+-----------------------------
+Val Acc:0.22  Val loss:9.022085    Train Acc:0.97
+ep:79/100    loss: 0.060175  [    0/ 1020]
+ep:79/100    loss: 0.171387  [  800/ 1020]
+-----------------------------
+Val Acc:0.18  Val loss:8.209280    Train Acc:0.89
+ep:80/100    loss: 0.315150  [    0/ 1020]
+ep:80/100    loss: 0.007438  [  800/ 1020]
+-----------------------------
+Val Acc:0.23  Val loss:7.652022    Train Acc:0.91
+ep:81/100    loss: 0.019490  [    0/ 1020]
+ep:81/100    loss: 0.102459  [  800/ 1020]
+-----------------------------
+Val Acc:0.23  Val loss:8.413968    Train Acc:0.98
+ep:82/100    loss: 0.005818  [    0/ 1020]
+ep:82/100    loss: 0.055560  [  800/ 1020]
+-----------------------------
+Val Acc:0.23  Val loss:9.421538    Train Acc:0.99
+ep:83/100    loss: 0.001889  [    0/ 1020]
+ep:83/100    loss: 0.004138  [  800/ 1020]
+-----------------------------
+Val Acc:0.22  Val loss:9.125192    Train Acc:0.95
+ep:84/100    loss: 0.003953  [    0/ 1020]
+ep:84/100    loss: 0.046045  [  800/ 1020]
+-----------------------------
+Val Acc:0.22  Val loss:10.271213    Train Acc:0.98
+ep:85/100    loss: 0.033764  [    0/ 1020]
+ep:85/100    loss: 0.007027  [  800/ 1020]
+-----------------------------
+Val Acc:0.24  Val loss:9.286110    Train Acc:0.98
+ep:86/100    loss: 0.002457  [    0/ 1020]
+ep:86/100    loss: 0.000267  [  800/ 1020]
+-----------------------------
+Val Acc:0.24  Val loss:9.975094    Train Acc:1.00
+ep:87/100    loss: 0.001026  [    0/ 1020]
+ep:87/100    loss: 0.001225  [  800/ 1020]
+-----------------------------
+Val Acc:0.24  Val loss:10.639393    Train Acc:1.00
+ep:88/100    loss: 0.003359  [    0/ 1020]
+ep:88/100    loss: 0.000478  [  800/ 1020]
+-----------------------------
+Val Acc:0.24  Val loss:10.971739    Train Acc:1.00
+ep:89/100    loss: 0.000021  [    0/ 1020]
+ep:89/100    loss: 0.000119  [  800/ 1020]
+-----------------------------
+Val Acc:0.24  Val loss:11.256078    Train Acc:1.00
+ep:90/100    loss: 0.000321  [    0/ 1020]
+ep:90/100    loss: 0.000003  [  800/ 1020]
+-----------------------------
+Val Acc:0.24  Val loss:11.754171    Train Acc:1.00
+ep:91/100    loss: 0.003771  [    0/ 1020]
+ep:91/100    loss: 0.001480  [  800/ 1020]
+-----------------------------
+Val Acc:0.24  Val loss:12.309878    Train Acc:1.00
+ep:92/100    loss: 0.000172  [    0/ 1020]
+ep:92/100    loss: 0.000955  [  800/ 1020]
+-----------------------------
+Val Acc:0.24  Val loss:12.957246    Train Acc:1.00
+ep:93/100    loss: 0.000059  [    0/ 1020]
+ep:93/100    loss: 0.000155  [  800/ 1020]
+-----------------------------
+Val Acc:0.24  Val loss:12.712741    Train Acc:1.00
+ep:94/100    loss: 0.000297  [    0/ 1020]
+ep:94/100    loss: 0.000044  [  800/ 1020]
+-----------------------------
+Val Acc:0.24  Val loss:13.272515    Train Acc:1.00
+ep:95/100    loss: 0.000045  [    0/ 1020]
+ep:95/100    loss: 0.000094  [  800/ 1020]
+-----------------------------
+Val Acc:0.24  Val loss:13.873514    Train Acc:1.00
+ep:96/100    loss: 0.000181  [    0/ 1020]
+ep:96/100    loss: 0.000004  [  800/ 1020]
+-----------------------------
+Val Acc:0.24  Val loss:14.432751    Train Acc:1.00
+ep:97/100    loss: 0.000011  [    0/ 1020]
+ep:97/100    loss: 0.000074  [  800/ 1020]
+-----------------------------
+Val Acc:0.24  Val loss:14.300539    Train Acc:1.00
+ep:98/100    loss: 0.000104  [    0/ 1020]
+ep:98/100    loss: 0.000463  [  800/ 1020]
+-----------------------------
+Val Acc:0.24  Val loss:15.080664    Train Acc:1.00
+ep:99/100    loss: 0.000015  [    0/ 1020]
+ep:99/100    loss: 0.000002  [  800/ 1020]
+-----------------------------
+Val Acc:0.24  Val loss:15.304016    Train Acc:1.00
