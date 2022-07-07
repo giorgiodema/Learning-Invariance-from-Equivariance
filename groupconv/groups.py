@@ -302,8 +302,6 @@ class DihedralGroup(GroupBase):
         @param h: A group element.
         :return:
         """
-        largest_elem = 2 * np.pi * (self.order - 1) / self.order
-
-        return (2*h / largest_elem) - 1.
+        return 2*(h/(self.order-1))-1
 
 
