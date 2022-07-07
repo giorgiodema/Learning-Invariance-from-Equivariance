@@ -430,12 +430,12 @@ class GroupMaxPool(nn.Module):
         o = torch.max(input,dim=2).values
         return o
 
-class SpatialAvgPool(nn.Module):
+class SpatialGlobalAvgPool(nn.Module):
     def __init__(self) -> None:
         super().__init__()
 
     def forward(self, input):
-        # average the group dimension
+        # average the spatial dimension
         o = torch.mean(input,dim=[-1,-2])
         return o
 
@@ -454,6 +454,17 @@ class GroupBatchNorm2d(nn.BatchNorm2d):
 class SpatialMaxPool2d(nn.MaxPool2d):
     def __init__(self, kernel_size, stride = None, padding = 0, dilation = 1, return_indices: bool = False, ceil_mode: bool = False) -> None:
         super().__init__(kernel_size, stride, padding, dilation, return_indices, ceil_mode)
+    def forward(self, input):
+        group_el = input.shape[1]
+        nfilters = input.shape[2]
+        input = torch.reshape(input,(input.shape[0],group_el*nfilters,input.shape[-2],input.shape[-1]))
+        o =  super().forward(input)
+        o = torch.reshape(o,(o.shape[0],group_el,nfilters,o.shape[-2],o.shape[-1]))
+        return o
+
+class SpatialAvgPool2d(nn.AvgPool2d):
+    def __init__(self, kernel_size, stride = None, padding = 0, ceil_mode: bool = False, count_include_pad: bool = True, divisor_override = None) -> None:
+        super().__init__(kernel_size, stride, padding, ceil_mode, count_include_pad, divisor_override)
     def forward(self, input):
         group_el = input.shape[1]
         nfilters = input.shape[2]
