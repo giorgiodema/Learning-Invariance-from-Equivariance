@@ -1,31 +1,39 @@
 import torchvision
 import torch
+from groupconv.groups import *
+import random
 from torchvision.transforms import Compose,Resize,ToTensor,Lambda,Normalize,RandomRotation,RandomHorizontalFlip,RandomVerticalFlip
 torch.manual_seed(0)
 
-def get_loader(split:str,bs:int,nclass:int,first_class_idx=0,augment=None):
+def apply_random_action(x:torch.tensor,transformed_grid:torch.tensor):
+    x = x.unsqueeze(0)
+    n_actions = transformed_grid.shape[0]
+    selected_action = random.randint(0,n_actions-1)
+    grid = transformed_grid[[selected_action],...]
+    xt = torch.nn.functional.grid_sample(x,grid,align_corners=True, mode="bilinear")
+    return xt[0,...]
+
+def get_loader(split:str,bs:int,nclass:int,first_class_idx=0,augment=None,img_size=28):
     transforms = []
-    if augment=="c4":
-        transforms+=[
-            RandomRotation(90),
-            RandomRotation(180),
-            RandomRotation(270)
-        ]
-    elif augment=="d4":
-        transforms+=[
-            RandomRotation(90),
-            RandomRotation(180),
-            RandomRotation(270),
-            RandomHorizontalFlip(),
-            RandomVerticalFlip(),
-            RandomRotation(90),
-            RandomRotation(180),
-            RandomRotation(270)
-        ]
     transforms += [
-        #Resize((256,256)),
         ToTensor()
     ]
+    if augment!=None:
+        group = None
+        if augment=="c4":
+            group = CyclicGroup(4)
+        elif augment=="d4":
+            group = DihedralGroup(4)
+        else:
+            raise NotImplementedError
+        img_grid_R2 = torch.stack(torch.meshgrid(
+            torch.linspace(-1, 1, img_size),
+            torch.linspace(-1, 1, img_size),
+        ))
+        transformed_grid = group.left_action_on_R2(group.elements(),img_grid_R2)
+        transforms.append(
+            torchvision.transforms.Lambda(lambda x:apply_random_action(x,transformed_grid))
+        )
     dataset = torchvision.datasets.FashionMNIST(
         "dataset/",
         download=True,
@@ -48,9 +56,27 @@ def get_loader(split:str,bs:int,nclass:int,first_class_idx=0,augment=None):
 if __name__=="__main__":
     import matplotlib.pyplot as plt
 
-    tl = get_loader("test",4,10,augment=None)
+    tl = get_loader("test",4,10,augment="d4")
     for x,y in tl:
         print(y)
         for i in range(x.shape[0]):
             plt.imshow(torch.einsum("bcxy->bxyc",x)[i])
         plt.show()
+        """
+        print("transformed")
+        group = CyclicGroup(4)
+        img_grid_R2 = torch.stack(torch.meshgrid(
+            torch.linspace(-1, 1, 28),
+            torch.linspace(-1, 1, 28),
+        ))
+        transformed_grid = group.left_action_on_R2(group.elements(),img_grid_R2)
+        n_actions = transformed_grid.shape[0]
+        selected_action = random.randint(0,n_actions-1)
+        print(f"selected action:{selected_action}")
+        grid = transformed_grid[[selected_action],...].repeat(n_actions,1,1,1)
+        xt = torch.nn.functional.grid_sample(x,grid,align_corners=True, mode="bilinear")
+
+        for i in range(xt.shape[0]):
+            plt.imshow(torch.einsum("bcxy->bxyc",xt)[i])
+        plt.show()
+        """
