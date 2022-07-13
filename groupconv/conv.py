@@ -57,7 +57,6 @@ class LiftingKernelBase(torch.nn.Module):
         """
         raise NotImplementedError()
 
-
 class InterpolativeLiftingKernel(LiftingKernelBase):
 
     def __init__(self, group, kernel_size, in_channels, out_channels):
@@ -118,7 +117,6 @@ class InterpolativeLiftingKernel(LiftingKernelBase):
 
         return transformed_weight
 
-
 class LiftingConvolution(torch.nn.Module):
 
     def __init__(self, group, in_channels, out_channels, kernel_size,stride=1,padding=0,dilation=1):
@@ -174,7 +172,6 @@ class LiftingConvolution(torch.nn.Module):
         )
 
         return x
-
 
 class GroupKernelBase(torch.nn.Module):
 
@@ -325,7 +322,6 @@ class InterpolativeGroupKernel(GroupKernelBase):
         transformed_weight = transformed_weight.transpose(0, 1)
 
         return transformed_weight
-
     
 class GroupConvolution(torch.nn.Module):
 
@@ -393,7 +389,6 @@ class GroupConvolution(torch.nn.Module):
         )
 
         return x
-
 
 class GroupAvgPool(nn.Module):
     def __init__(self) -> None:
