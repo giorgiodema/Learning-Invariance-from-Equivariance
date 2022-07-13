@@ -395,23 +395,6 @@ class GroupConvolution(torch.nn.Module):
         return x
 
 
-class DummyLayer(nn.Module):
-    def __init__(self) -> None:
-        super().__init__()
-    def forward(self,x):
-        return x
-
-class DummyC4EqNet(nn.Module):
-    def __init__(self) -> None:
-        super().__init__()
-        c4 = CyclicGroup(4)
-        self.lift  = LiftingConvolution(c4,3,64,3)
-        self.group = GroupConvolution(c4,64,64,3)
-    def forward(self,x):
-        o = self.lift(x)
-        o = self.group(o)
-        return o
-
 class GroupAvgPool(nn.Module):
     def __init__(self) -> None:
         super().__init__()
@@ -471,4 +454,12 @@ class SpatialAvgPool2d(nn.AvgPool2d):
         input = torch.reshape(input,(input.shape[0],group_el*nfilters,input.shape[-2],input.shape[-1]))
         o =  super().forward(input)
         o = torch.reshape(o,(o.shape[0],group_el,nfilters,o.shape[-2],o.shape[-1]))
+        return o
+
+class GlobalMaxPooling(torch.nn.Module):
+    def __init__(self) -> None:
+        super().__init__()
+    def forward(self,x):
+        o = torch.max(x,dim=-1).values
+        o = torch.max(o,dim=-1).values
         return o

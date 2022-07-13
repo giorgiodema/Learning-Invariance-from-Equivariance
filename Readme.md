@@ -1,3 +1,3 @@
-
-# TODOs:
-- fix augmentation (pick random action from the chosen group)
+# Learning Invariance From Equivariance
+Invariance is one of the most important concepts in deep learning. A classification function should be invariant to all that transformations that leave the object unchanged. One of the most used technique to achieve invariance is called "data augmentation", and it consists on adding transformed samples to the training set.
+In this project we show how invariance can be obtained exploiting the equivariance property of the convolution operation without relying on data augmentation.

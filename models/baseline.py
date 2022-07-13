@@ -2,7 +2,7 @@ from turtle import forward
 import torch
 from torch import nn
 from functools import reduce
-from utils.layers import *
+from groupconv.conv import GlobalMaxPooling
 
 
 
