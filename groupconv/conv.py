@@ -1,3 +1,9 @@
+"""
+This module generalize the standard convoltion, as well as pooling, to a general 
+discrete group. The code is based on the online tutorial
+ https://uvadlc-notebooks.readthedocs.io/en/latest/tutorial_notebooks/DL2/Geometric_deep_learning/tutorial1_regular_group_convolutions.html 
+by David Knigge and Gabriele Cesa
+"""
 import torch
 from torch import nn
 import math

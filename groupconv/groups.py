@@ -1,3 +1,9 @@
+"""
+This module implements the basic logic of groups, including listing the elements of the group,
+applying the group actions to the 2D grid, composing two actions etc. The code is based on 
+the online tutorial https://uvadlc-notebooks.readthedocs.io/en/latest/tutorial_notebooks/DL2/Geometric_deep_learning/tutorial1_regular_group_convolutions.html 
+by David Knigge and Gabriele Cesa
+"""
 import torch
 import numpy as np
 import math
@@ -73,9 +79,7 @@ class GroupBase(torch.nn.Module):
         @param g:
         """
         raise NotImplementedError()
-
-        
-
+       
 class CyclicGroup(GroupBase):
 
     def __init__(self, order):
@@ -175,9 +179,6 @@ class CyclicGroup(GroupBase):
         largest_elem = 2 * np.pi * (self.order - 1) / self.order
 
         return (2*h / largest_elem) - 1.
-
-
-
 
 class DihedralGroup(GroupBase):
 
